@@ -31,12 +31,13 @@ namespace TestePraticoUpBase
         {
             services.AddDbContext<AlunoContext>(opts => opts.UseMySQL(Configuration.GetConnectionString("AlunoConnection")));
             services.AddScoped<AlunoService, AlunoService>();
+            services.AddScoped<SecurityService, SecurityService>();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestePraticoUpBase", Version = "v1" });
-            });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestePraticoUpBase", Version = "v1" });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,9 +46,11 @@ namespace TestePraticoUpBase
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestePraticoUpBase v1"));
             }
+
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger.json", "TestePraticoUpBase v1"));
 
             app.UseHttpsRedirection();
 

@@ -2,16 +2,14 @@
 using AlunoAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace TestePraticoUpBase.Migrations
+namespace AlunoAPI.Migrations
 {
     [DbContext(typeof(AlunoContext))]
-    [Migration("20220516195411_CriandoTabelaAluno")]
-    partial class CriandoTabelaAluno
+    partial class AlunoContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,10 +35,6 @@ namespace TestePraticoUpBase.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("RePassword")
                         .IsRequired()
                         .HasColumnType("text");
 

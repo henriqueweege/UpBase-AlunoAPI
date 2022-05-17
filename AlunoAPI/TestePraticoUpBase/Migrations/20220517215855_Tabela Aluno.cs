@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using MySql.EntityFrameworkCore.Metadata;
 
-namespace TestePraticoUpBase.Migrations
+namespace AlunoAPI.Migrations
 {
-    public partial class CriandoTabelaAluno : Migration
+    public partial class TabelaAluno : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,8 +16,7 @@ namespace TestePraticoUpBase.Migrations
                     NomeCompleto = table.Column<string>(type: "text", nullable: false),
                     NomeDeUsuario = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<string>(type: "text", nullable: false),
-                    RePassword = table.Column<string>(type: "text", nullable: false)
+                    Password = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

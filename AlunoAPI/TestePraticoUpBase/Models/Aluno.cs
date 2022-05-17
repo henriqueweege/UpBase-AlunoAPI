@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace AlunoAPI.Models
 {
@@ -21,9 +22,6 @@ namespace AlunoAPI.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required]
-        [Compare("Password", ErrorMessage = "A senha não está igual.")]
-        public string RePassword { get; set; }
         
         
     }

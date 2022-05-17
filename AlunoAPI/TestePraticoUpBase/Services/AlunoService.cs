@@ -3,6 +3,7 @@ using AlunoAPI.Data.Dto;
 using AlunoAPI.Models;
 using AutoMapper;
 using FluentResults;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,22 +13,28 @@ namespace AlunoAPI.Services
     {
         private IMapper _mapper;
         private AlunoContext _context;
+        private SecurityService _secutiry;
 
-        public AlunoService(AlunoContext context, IMapper mapper)
+        public AlunoService(AlunoContext context, IMapper mapper, SecurityService secutiry)
         {
             _context = context;
             _mapper = mapper;
+            _secutiry = secutiry;
         }
-
+        
         public ReadAlunoDto AdicionaAluno(CreateAlunoDto dto)
         {
+
             Aluno aluno = _mapper.Map<Aluno>(dto);
+            Console.WriteLine(aluno.Password);
+            aluno.Password = _secutiry.CriptografaSenha(aluno.Password);
+            Console.WriteLine(aluno.Password);
             _context.Aluno.Add(aluno);
             _context.SaveChanges();
             return _mapper.Map<ReadAlunoDto>(aluno);
         }
 
-        internal List<ReadAlunoDto> RecuperaTodosOsALunos()
+        public List<ReadAlunoDto> RecuperaTodosOsALunos()
         {
             List<Aluno> aluno = _context.Aluno.ToList();
             if(aluno == null)
@@ -37,7 +44,7 @@ namespace AlunoAPI.Services
             return _mapper.Map<List<ReadAlunoDto>>(aluno);
         }
 
-        internal ReadAlunoDto RecuperaAlunoPorId(int id)
+        public ReadAlunoDto RecuperaAlunoPorId(int id)
         {
             Aluno aluno = _context.Aluno.FirstOrDefault(aluno => aluno.Id == id);
             if(aluno != null)
@@ -47,7 +54,7 @@ namespace AlunoAPI.Services
             return null;
         }
 
-        internal Result AtualizaAluno(int id, UpdateAlunoDto alunoDto)
+        public Result AtualizaAluno(int id, UpdateAlunoDto alunoDto)
         {
             Aluno aluno = _context.Aluno.FirstOrDefault(aluno => aluno.Id == id);
             if(aluno == null)
@@ -59,7 +66,7 @@ namespace AlunoAPI.Services
             return Result.Ok();
         }
 
-        internal Result DeletaAluno(int id)
+        public Result DeletaAluno(int id)
         {
             Aluno aluno = _context.Aluno.FirstOrDefault(aluno => aluno.Id == id);
             if (aluno == null)

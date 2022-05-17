@@ -27,7 +27,7 @@ namespace AlunoAPI.Controllers
         public IActionResult RecuperaTodosOsAlunos()
         {
             List<ReadAlunoDto> readDto = _alunoService.RecuperaTodosOsALunos();
-            if (readDto == null) return NotFound();
+            if (readDto.Count == 0) return NotFound();
             return Ok(readDto);
         }
         [HttpGet("{id}")]

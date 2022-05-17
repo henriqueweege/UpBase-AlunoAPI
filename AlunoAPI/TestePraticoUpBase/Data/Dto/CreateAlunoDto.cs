@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace AlunoAPI.Data.Dto
 {
@@ -16,9 +17,6 @@ namespace AlunoAPI.Data.Dto
         [DataType(DataType.Password)]
         [Required]
         public string Password { get; set; }
-        [DataType(DataType.Password)]
-        [Required]
-        [Compare("Password")]
-        public string RePassword { get; set; }
+
     }
 }

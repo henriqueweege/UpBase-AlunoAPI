@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "PAUERT5h2LbPMo9DtpGnYNg/JdJbTJ/rEtZQMAI2M9gtsB+b9/DEBHBIMA7h7O6Jeu2qIC3PFX8+1IT+VQ+qCQ==",
+  "dgSpecHash": "CCpSAjxmlnZ0unaz9E9tZp6hQ3UaWkWdmdb5cyb3k0dfN7iRQStkAnOyahPb++gUAVN8wWUuTcPwr5+6+sFtkw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\henri\\Desktop\\UpBase\\AlunoAPI\\TestePraticoUpBase\\TestePraticoUpBase.csproj",
+  "projectFilePath": "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\AlunoAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\henri\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\henri\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\fluentresults\\2.5.0\\fluentresults.2.5.0.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",

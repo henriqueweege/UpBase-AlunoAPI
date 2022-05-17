@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\TestePraticoUpBase.csproj": {}
+    "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\AlunoAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\TestePraticoUpBase.csproj": {
+    "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\AlunoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\TestePraticoUpBase.csproj",
-        "projectName": "TestePraticoUpBase",
-        "projectPath": "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\TestePraticoUpBase.csproj",
+        "projectUniqueName": "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\AlunoAPI.csproj",
+        "projectName": "AlunoAPI",
+        "projectPath": "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\AlunoAPI.csproj",
         "packagesPath": "C:\\Users\\henri\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\obj\\",
         "projectStyle": "PackageReference",
@@ -43,6 +43,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.1, )"
+            },
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
             },
             "FluentResults": {
               "target": "Package",
