@@ -4,12 +4,51 @@
         <name>AlunoAPI</name>
     </assembly>
     <members>
-        <member name="M:AlunoAPI.Controllers.AlunoController.DeletaAluno(System.Int32)">
+        <member name="M:AlunoAPI.Controllers.AlunoController.AdicionaAluno(AlunoAPI.Data.Dto.CreateAlunoDto)">
+             <response code="201">Aluno criado com sucesso.</response>
+             <response code="400">Erro ocorre caso os campos não estejam preenchidos de maneira válida.</response>
+             <summary>
+             Este método permite cadastrar um novo aluno no bando de dados.
+             </summary>
+             <remarks>
+             Exemplo de requisição:
+            
+                 {
+                    "NomeCompleto": "João da Silva",
+                    "NomeDeUsuario ": "joaodasilva",
+                    "Email": "email@email.com.br",
+                    "Password":"Senha123!"
+                 }
+            
+             </remarks>
+        </member>
+        <member name="M:AlunoAPI.Controllers.AlunoController.RecuperaTodosOsAlunos">
+            <response code="200">Alunos recuperados com sucesso.</response>
+            <response code="404">ID inválido.</response>
             <summary>
-            Deletes a specific TodoItem.
+             Este método permite recuperar os dados de todos os alunos.
             </summary>
-            <param name="id"></param>
-            <returns></returns>
+        </member>
+        <member name="M:AlunoAPI.Controllers.AlunoController.RecuperaAlunoPorId(System.Int32)">
+            <response code="200">Aluno recuperado com sucesso.</response>
+            <response code="404">ID inválido.</response>
+            <summary>
+             Este método permite recuperar os dados do aluno a partir do seu ID.
+            </summary>
+        </member>
+        <member name="M:AlunoAPI.Controllers.AlunoController.AtualizaAluno(System.Int32,AlunoAPI.Data.Dto.UpdateAlunoDto)">
+            <response code="204">Cadastro alterado com sucesso.</response>
+            <response code="404">ID inválido.</response>
+            <summary>
+             Este método permite editar o cadastro do aluno a partir do seu ID.
+            </summary>
+        </member>
+        <member name="M:AlunoAPI.Controllers.AlunoController.DeletaAluno(System.Int32)">
+            <response code="204">Cadastro excluído com sucesso.</response>
+            <response code="404">ID inválido.</response>
+            <summary>
+            Este método permite deletar o cadastro do aluno a partir do seu ID.
+            </summary>
         </member>
     </members>
 </doc>
