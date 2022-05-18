@@ -39,7 +39,27 @@ namespace TestePraticoUpBase
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TestePraticoUpBase", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "1.0.0",
+                    Title = "Teste Prático UpBase - AlunoAPI",
+                    Description = "API RESTful criada como requisito avaliativo da fase prática do processo " +
+                    "seletivo para vaga de estágio .NET na UpBase. Esta API conta com recursos CRUD, integração com " +
+                    "banco de dados MySQL, e recursos extra como senha criptografada e critérios que impedem o cadastro " +
+                    "de usuário com dados duplicados.",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Suporte",
+                        Url = new Uri("https://www.linkedin.com/in/henrique-weege-baa287166/"),
+                        Email = "henriqueweege@gmail.com"
+
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Licença: GPLv3",
+                        Url = new Uri("https://www.gnu.org/licenses/gpl-3.0.html")
+                    }
+                });
                 var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
@@ -55,8 +75,8 @@ namespace TestePraticoUpBase
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestePraticoUpBase v1"));
-           
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Teste Prático UpBase - AlunoAPI 1.0.0"));
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

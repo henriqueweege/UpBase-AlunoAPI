@@ -21,14 +21,22 @@ namespace AlunoAPI.Services
             _mapper = mapper;
             _secutiry = secutiry;
         }
-        
+
         public ReadAlunoDto AdicionaAluno(CreateAlunoDto dto)
         {
 
             Aluno aluno = _mapper.Map<Aluno>(dto);
             aluno.Password = _secutiry.CriptografaSenha(aluno.Password);
             _context.Aluno.Add(aluno);
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
             return _mapper.Map<ReadAlunoDto>(aluno);
         }
 
@@ -37,7 +45,7 @@ namespace AlunoAPI.Services
             List<Aluno> aluno = _context.Aluno.ToList();
             if(aluno == null)
             {
-                return null;
+                 return null;
             }
             return _mapper.Map<List<ReadAlunoDto>>(aluno);
         }
@@ -51,7 +59,6 @@ namespace AlunoAPI.Services
             }
             return null;
         }
-
         public Result AtualizaAluno(int id, UpdateAlunoDto alunoDto)
         {
             Aluno aluno = _context.Aluno.FirstOrDefault(aluno => aluno.Id == id);

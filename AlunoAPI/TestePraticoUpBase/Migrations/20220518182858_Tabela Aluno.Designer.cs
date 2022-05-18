@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AlunoAPI.Migrations
 {
     [DbContext(typeof(AlunoContext))]
-    [Migration("20220518124904_Tabela Aluno")]
+    [Migration("20220518182858_Tabela Aluno")]
     partial class TabelaAluno
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -8,14 +8,23 @@ namespace AlunoAPI.Data.Dto
         [Key]
         [Required]
         public int Id { get; set; }
-        [Required(ErrorMessage ="Nome deve estar preenchido")]
+
+        [Required]
+        [MaxLength(250)]
         public string NomeCompleto { get; set; }
+
         [Required]
+        [MaxLength(250)]
         public string NomeDeUsuario { get; set; }
+
         [Required]
+        [MaxLength(250)]
+        [EmailAddress]
         public string Email { get; set; }
-        [DataType(DataType.Password)]
+
+        //[DataType(DataType.Password)]
         [Required]
+        [MaxLength(250)]
         public string Password { get; set; }
 
     }
