@@ -44,6 +44,12 @@ namespace AlunoAPI.Controllers
             if (resultado.IsFailed) return NotFound();
             return NoContent();
         }
+
+        /// <summary>
+        /// Deletes a specific TodoItem.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult DeletaAluno(int id)
         {

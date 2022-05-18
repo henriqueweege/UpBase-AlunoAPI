@@ -24,7 +24,8 @@ namespace AlunoAPI.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("NomeCompleto")
                         .IsRequired()
@@ -32,13 +33,20 @@ namespace AlunoAPI.Migrations
 
                     b.Property<string>("NomeDeUsuario")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("NomeDeUsuario")
+                        .IsUnique();
 
                     b.ToTable("Aluno");
                 });

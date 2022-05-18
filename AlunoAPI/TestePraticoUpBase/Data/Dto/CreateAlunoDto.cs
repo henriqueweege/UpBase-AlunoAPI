@@ -8,7 +8,7 @@ namespace AlunoAPI.Data.Dto
         [Key]
         [Required]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Nome deve estar preenchido")]
         public string NomeCompleto { get; set; }
         [Required]
         public string NomeDeUsuario { get; set; }

@@ -26,9 +26,7 @@ namespace AlunoAPI.Services
         {
 
             Aluno aluno = _mapper.Map<Aluno>(dto);
-            Console.WriteLine(aluno.Password);
             aluno.Password = _secutiry.CriptografaSenha(aluno.Password);
-            Console.WriteLine(aluno.Password);
             _context.Aluno.Add(aluno);
             _context.SaveChanges();
             return _mapper.Map<ReadAlunoDto>(aluno);

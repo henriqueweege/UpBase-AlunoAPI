@@ -3,6 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AlunoAPI.Models
 {
+
+    [Index(nameof(NomeDeUsuario), IsUnique = true)]
+    [Index(nameof(Email), IsUnique = true)]
+
     public class Aluno
     {
         [Key]
@@ -13,9 +17,12 @@ namespace AlunoAPI.Models
         public string NomeCompleto { get; set; }
 
         [Required]
+        [MaxLength(250)]
+
         public string NomeDeUsuario { get; set; }
 
         [Required]
+        [MaxLength(250)]
         public string Email { get; set; }
 
         [Required]

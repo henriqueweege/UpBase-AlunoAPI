@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AlunoAPI.Migrations
 {
     [DbContext(typeof(AlunoContext))]
-    [Migration("20220517215855_Tabela Aluno")]
+    [Migration("20220518124904_Tabela Aluno")]
     partial class TabelaAluno
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,8 @@ namespace AlunoAPI.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("NomeCompleto")
                         .IsRequired()
@@ -34,13 +35,20 @@ namespace AlunoAPI.Migrations
 
                     b.Property<string>("NomeDeUsuario")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("NomeDeUsuario")
+                        .IsUnique();
 
                     b.ToTable("Aluno");
                 });

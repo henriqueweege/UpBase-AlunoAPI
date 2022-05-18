@@ -48,5 +48,6 @@ C:\Users\henri\Desktop\UpBase\UpBase-AlunoAPI\AlunoAPI\TestePraticoUpBase\obj\De
 C:\Users\henri\Desktop\UpBase\UpBase-AlunoAPI\AlunoAPI\TestePraticoUpBase\obj\Debug\net5.0\AlunoAPI.pdb
 C:\Users\henri\Desktop\UpBase\UpBase-AlunoAPI\AlunoAPI\TestePraticoUpBase\obj\Debug\net5.0\AlunoAPI.genruntimeconfig.cache
 C:\Users\henri\Desktop\UpBase\UpBase-AlunoAPI\AlunoAPI\TestePraticoUpBase\obj\Debug\net5.0\ref\AlunoAPI.dll
-C:\Users\henri\Desktop\UpBase\UpBase-AlunoAPI\AlunoAPI\TestePraticoUpBase\bin\Debug\net5.0\swagger.json
 C:\Users\henri\Desktop\UpBase\UpBase-AlunoAPI\AlunoAPI\TestePraticoUpBase\bin\Debug\net5.0\BCrypt.Net-Core.dll
+C:\Users\henri\Desktop\UpBase\UpBase-AlunoAPI\AlunoAPI\TestePraticoUpBase\bin\Debug\net5.0\AlunoAPI.xml
+C:\Users\henri\Desktop\UpBase\UpBase-AlunoAPI\AlunoAPI\TestePraticoUpBase\obj\Debug\net5.0\AlunoAPI.xml
