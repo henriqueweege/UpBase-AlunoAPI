@@ -3,6 +3,7 @@ using AlunoAPI.Services;
 using FluentResults;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace AlunoAPI.Controllers
@@ -37,9 +38,15 @@ namespace AlunoAPI.Controllers
         [HttpPost]
         public IActionResult AdicionaAluno([FromBody] CreateAlunoDto dto)
         {
-            ReadAlunoDto readDto = _alunoService.AdicionaAluno(dto);
-            if (readDto != null) return CreatedAtAction(nameof(RecuperaAlunoPorId), new { Id = readDto.Id }, readDto);
-            return BadRequest("Os campos não devem estar presentes no banco de dados.");
+            try
+            {
+                ReadAlunoDto readDto = _alunoService.AdicionaAluno(dto);
+                return CreatedAtAction(nameof(RecuperaAlunoPorId), new { Id = readDto.Id }, readDto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.GetBaseException().Message);
+            }
 
         }
 

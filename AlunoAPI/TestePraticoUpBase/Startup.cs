@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -37,10 +38,12 @@ namespace TestePraticoUpBase
             services.AddScoped<SecurityService, SecurityService>();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddRouting(opts => opts.LowercaseQueryStrings = true);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
+                    
                     Version = "1.0.0",
                     Title = "Teste Prático UpBase - AlunoAPI",
                     Description = "API RESTful criada como requisito avaliativo da fase prática do processo " +
@@ -63,6 +66,7 @@ namespace TestePraticoUpBase
                 });
                 var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+                
             });
             
         }
@@ -70,6 +74,22 @@ namespace TestePraticoUpBase
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
+            //var cultureInfo = new CultureInfo("pt-BR");
+            //CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            //CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+            //app.UseRequestLocalization(new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(cultureInfo),
+            //    SupportedCultures = new List<CultureInfo>
+            //    {
+            //        cultureInfo,
+            //    },
+            //    SupportedUICultures = new List<CultureInfo>
+            //    {
+            //        cultureInfo,
+            //    }
+            //}) ;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
