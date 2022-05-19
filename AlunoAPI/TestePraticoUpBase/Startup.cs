@@ -33,34 +33,35 @@ namespace TestePraticoUpBase
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddDbContext<AlunoContext>(opts => opts.UseMySQL(Configuration.GetConnectionString("AlunoConnection")));
             services.AddScoped<AlunoService, AlunoService>();
             services.AddScoped<SecurityService, SecurityService>();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddRouting(opts => opts.LowercaseQueryStrings = true);
             services.AddSwaggerGen(c =>
             {
+                
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     
                     Version = "1.0.0",
-                    Title = "Teste Prático UpBase - AlunoAPI",
-                    Description = "API RESTful criada como requisito avaliativo da fase prática do processo " +
-                    "seletivo para vaga de estágio .NET na UpBase. Esta API conta com funcionalidades CRUD, integração com " +
-                    "banco de dados MySQL, e os seguintes recursos: senha  salva com criptografia no banco de dados, " +
-                    "critérios que impedem o cadastro de usuário com dados duplicados, e critérios para criação de senha " +
-                    "segura (no mínimo: 6 caracteres; precisando contar pelo menos uma letra maiúscula, um caractere especial e um número).",
+                    Title = "Practical Evaluation UpBase - StudentAPI",
+                    Description = "RESTful API created as an evaluation requirement for the practical phase of the " +
+                    "selection process for a .NET internship at UpBase. This API has CRUD functionalities, integration " +
+                    "with MySQL database, and the following resources: password saved with encryption, criteria that prevent " +
+                    "registration of duplicated data, criteria for creating user name and criteria to create a secure " +
+                    "password (minimum: 6 characters; must contain at least one capital letter, one special character and one number).",
                     Contact = new OpenApiContact
                     {
-                        Name = "Suporte",
+                        Name = "Support",
                         Url = new Uri("https://www.linkedin.com/in/henrique-weege-baa287166/"),
                         Email = "henriqueweege@gmail.com"
 
                     },
                     License = new OpenApiLicense
                     {
-                        Name = "Licença: GPLv3",
+                        Name = "License: GPLv3",
                         Url = new Uri("https://www.gnu.org/licenses/gpl-3.0.html")
                     }
                 });
@@ -75,28 +76,13 @@ namespace TestePraticoUpBase
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             
-            //var cultureInfo = new CultureInfo("pt-BR");
-            //CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-            //CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-            //app.UseRequestLocalization(new RequestLocalizationOptions
-            //{
-            //    DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(cultureInfo),
-            //    SupportedCultures = new List<CultureInfo>
-            //    {
-            //        cultureInfo,
-            //    },
-            //    SupportedUICultures = new List<CultureInfo>
-            //    {
-            //        cultureInfo,
-            //    }
-            //}) ;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Teste Prático UpBase - AlunoAPI 1.0.0"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Practical Evaluation UpBase - StudentAPI 1.0.0"));
 
             app.UseHttpsRedirection();
 

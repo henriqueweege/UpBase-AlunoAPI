@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CCpSAjxmlnZ0unaz9E9tZp6hQ3UaWkWdmdb5cyb3k0dfN7iRQStkAnOyahPb++gUAVN8wWUuTcPwr5+6+sFtkw==",
+  "dgSpecHash": "3TjBAuZTheDG+F/KZiP7Y7CvRbAcW9LEsbMu0vzTcaeGM1AQb9kHlBEveBX0i+W5Sx56GwybDef3lJx0TnqYeQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\henri\\Desktop\\UpBase\\UpBase-AlunoAPI\\AlunoAPI\\TestePraticoUpBase\\AlunoAPI.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,8 @@
     "C:\\Users\\henri\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\k4os.compression.lz4.streams\\1.1.11\\k4os.compression.lz4.streams.1.1.11.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\henri\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.5\\microsoft.aspnetcore.jsonpatch.5.0.5.nupkg.sha512",
+    "C:\\Users\\henri\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.5\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.5.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.5\\microsoft.entityframeworkcore.5.0.5.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.5\\microsoft.entityframeworkcore.abstractions.5.0.5.nupkg.sha512",
@@ -36,6 +38,8 @@
     "C:\\Users\\henri\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\mysql.data\\8.0.24\\mysql.data.8.0.24.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\mysql.entityframeworkcore\\5.0.3\\mysql.entityframeworkcore.5.0.3.nupkg.sha512",
+    "C:\\Users\\henri\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\henri\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
     "C:\\Users\\henri\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",

@@ -1,4 +1,5 @@
 ﻿using AlunoAPI.Data.Dto;
+using AlunoAPI.Models;
 using AlunoAPI.Services;
 using FluentResults;
 using Microsoft.AspNetCore.Http;
@@ -18,23 +19,31 @@ namespace AlunoAPI.Controllers
         {
             _alunoService = alunoService;
         }
-        /// <response code="201">Aluno criado com sucesso.</response>
-        /// <response code="400">Erro ocorre caso os campos não estejam preenchidos de maneira válida.</response>
-        /// <summary>
-        /// Este método permite cadastrar um novo aluno no bando de dados.
-        /// </summary>
+
+
+
+
+
+
+
+        /// <response code="201">Student created with success.</response>
+        /// <response code="400">This error occurs when the requesition fields are not filled within the required format, 
+        /// or the student email/username already exists in the database.</response>
+        /// <response code="500">Server error.</response>
+        /// <summary>Insert a student into the database.</summary>
         /// <remarks>
-        /// Exemplo de requisição:
+        /// Requisition example:
         ///
         ///     {
-        ///        "NomeCompleto": "João da Silva",
-        ///        "NomeDeUsuario ": "joaodasilva",
-        ///        "Email": "email@email.com.br",
-        ///        "Password":"Senha123!"
+        ///        "id": 0,
+        ///        "nomeCompleto": "João da Silva",
+        ///        "nomeDeUsuario ": "joaodasilva",
+        ///        "email": "email@email.com.br",
+        ///        "password":"Senha123!"
         ///     }
         ///
         /// </remarks>
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Aluno), StatusCodes.Status201Created)]
         [HttpPost]
         public IActionResult AdicionaAluno([FromBody] CreateAlunoDto dto)
         {
@@ -55,13 +64,13 @@ namespace AlunoAPI.Controllers
 
 
 
-        /// <response code="200">Alunos recuperados com sucesso.</response>
-        /// <response code="404">Banco de dados vazio.</response>
-        /// <summary>
-        ///  Este método permite recuperar os dados de todos os alunos.
-        /// </summary>
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [HttpGet]
+        /// <response code="200">Data recovered Successfully.</response>
+        /// <response code="404">Empty database.</response>
+        /// <response code="500">Server error.</response>
+        /// <summary>Access all database information.</summary>
+
+        [ProducesResponseType(typeof(Aluno), StatusCodes.Status200OK)]
+         [HttpGet]
         public IActionResult RecuperaTodosOsAlunos()
         {
             List<ReadAlunoDto> readDto = _alunoService.RecuperaTodosOsALunos();
@@ -75,12 +84,13 @@ namespace AlunoAPI.Controllers
 
 
 
-        /// <response code="200">Aluno recuperado com sucesso.</response>
-        /// <response code="404">ID inválido.</response>
-        /// <summary>
-        ///  Este método permite recuperar os dados do aluno a partir do seu ID.
-        /// </summary>
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        /// <response code="200">Data recovered Successfully.</response>
+        /// <response code="404">Invalid ID.</response>
+        /// <response code="500">Server error.</response>
+        /// <summary>Using ID, access information from a specific student.</summary>
+        /// <param name="id" example ="0"></param>
+
+        [ProducesResponseType(typeof(Aluno), StatusCodes.Status200OK)]
         [HttpGet("{id}")]
         public IActionResult RecuperaAlunoPorId(int id)
         {
@@ -96,12 +106,12 @@ namespace AlunoAPI.Controllers
 
 
 
-        /// <response code="204">Cadastro alterado com sucesso.</response>
-        /// <response code="404">ID inválido.</response>
-        /// <summary>
-        ///  Este método permite editar o cadastro do aluno a partir do seu ID.
-        /// </summary>
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        /// <response code="204">Information updated successfully.</response>
+        /// <response code="404">Invalid ID.</response>
+        /// <response code="500">Server error.</response>
+        /// <summary>Using ID, enables to update information from a specific student.</summary>
+        /// <param name="id" example ="0"></param>
+        [ProducesResponseType(typeof(Aluno), StatusCodes.Status204NoContent)]
         [HttpPut("{id}")]
         public IActionResult AtualizaAluno(int id, [FromBody] UpdateAlunoDto alunoDto)
         {
@@ -117,13 +127,12 @@ namespace AlunoAPI.Controllers
 
 
 
-        /// <response code="204">Cadastro excluído com sucesso.</response>
-        /// <response code="404">ID inválido.</response>
-        /// <summary>
-        /// Este método permite deletar o cadastro do aluno a partir do seu ID.
-        /// </summary>
-
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        /// <response code="204">Student deleted successfully.</response>
+        /// <response code="404">Invalid ID.</response>
+        /// <response code="500">Server error.</response>
+        /// <summary> Using ID, enables to delete a specific student.</summary>
+        /// <param name="id" example ="0"></param>
+        [ProducesResponseType(typeof(Aluno), StatusCodes.Status204NoContent)]
         [HttpDelete("{id}")]
         public IActionResult DeletaAluno(int id)
         {

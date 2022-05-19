@@ -5,50 +5,116 @@
     </assembly>
     <members>
         <member name="M:AlunoAPI.Controllers.AlunoController.AdicionaAluno(AlunoAPI.Data.Dto.CreateAlunoDto)">
-             <response code="201">Aluno criado com sucesso.</response>
-             <response code="400">Erro ocorre caso os campos não estejam preenchidos de maneira válida.</response>
-             <summary>
-             Este método permite cadastrar um novo aluno no bando de dados.
-             </summary>
+             <response code="201">Student created with success.</response>
+             <response code="400">This error occurs when the requesition fields are not filled within the required format, 
+             or the student email/username already exists in the database.</response>
+             <response code="500">Server error.</response>
+             <summary>Insert a student into the database.</summary>
              <remarks>
-             Exemplo de requisição:
+             Requisition example:
             
                  {
-                    "NomeCompleto": "João da Silva",
-                    "NomeDeUsuario ": "joaodasilva",
-                    "Email": "email@email.com.br",
-                    "Password":"Senha123!"
+                    "id": 0,
+                    "nomeCompleto": "João da Silva",
+                    "nomeDeUsuario ": "joaodasilva",
+                    "email": "email@email.com.br",
+                    "password":"Senha123!"
                  }
             
              </remarks>
         </member>
         <member name="M:AlunoAPI.Controllers.AlunoController.RecuperaTodosOsAlunos">
-            <response code="200">Alunos recuperados com sucesso.</response>
-            <response code="404">Banco de dados vazio.</response>
-            <summary>
-             Este método permite recuperar os dados de todos os alunos.
-            </summary>
+            <response code="200">Data recovered Successfully.</response>
+            <response code="404">Empty database.</response>
+            <response code="500">Server error.</response>
+            <summary>Access all database information.</summary>
         </member>
         <member name="M:AlunoAPI.Controllers.AlunoController.RecuperaAlunoPorId(System.Int32)">
-            <response code="200">Aluno recuperado com sucesso.</response>
-            <response code="404">ID inválido.</response>
-            <summary>
-             Este método permite recuperar os dados do aluno a partir do seu ID.
-            </summary>
+            <response code="200">Data recovered Successfully.</response>
+            <response code="404">Invalid ID.</response>
+            <response code="500">Server error.</response>
+            <summary>Using ID, access information from a specific student.</summary>
+            <param name="id" example ="0"></param>
         </member>
         <member name="M:AlunoAPI.Controllers.AlunoController.AtualizaAluno(System.Int32,AlunoAPI.Data.Dto.UpdateAlunoDto)">
-            <response code="204">Cadastro alterado com sucesso.</response>
-            <response code="404">ID inválido.</response>
-            <summary>
-             Este método permite editar o cadastro do aluno a partir do seu ID.
-            </summary>
+            <response code="204">Information updated successfully.</response>
+            <response code="404">Invalid ID.</response>
+            <response code="500">Server error.</response>
+            <summary>Using ID, enables to update information from a specific student.</summary>
+            <param name="id" example ="0"></param>
         </member>
         <member name="M:AlunoAPI.Controllers.AlunoController.DeletaAluno(System.Int32)">
-            <response code="204">Cadastro excluído com sucesso.</response>
-            <response code="404">ID inválido.</response>
-            <summary>
-            Este método permite deletar o cadastro do aluno a partir do seu ID.
-            </summary>
+            <response code="204">Student deleted successfully.</response>
+            <response code="404">Invalid ID.</response>
+            <response code="500">Server error.</response>
+            <summary> Using ID, enables to delete a specific student.</summary>
+            <param name="id" example ="0"></param>
+        </member>
+        <member name="T:AlunoAPI.Data.Dto.CreateAlunoDto">
+            <sumary>
+            Used to create a new student.
+             </sumary>
+        </member>
+        <member name="P:AlunoAPI.Data.Dto.CreateAlunoDto.Id">
+            <sumary>
+            Students Id: must be setted as 0 to be generated automatically.
+             </sumary>
+             <example>0</example>
+        </member>
+        <member name="P:AlunoAPI.Data.Dto.CreateAlunoDto.NomeCompleto">
+            <sumary>
+            Name, middle name, and last name of the student.
+             </sumary>
+             <example>João Pereira da Silva</example>
+        </member>
+        <member name="P:AlunoAPI.Data.Dto.CreateAlunoDto.NomeDeUsuario">
+            <sumary>
+            Username: name to be used in the system, must be all lowercase letters, numbers 
+            and special characters are not allowed.
+             </sumary>
+             <example>joaopereiradasilva</example>
+        </member>
+        <member name="P:AlunoAPI.Data.Dto.CreateAlunoDto.Email">
+            <sumary>
+            Email: must follow the email format.
+             </sumary>
+             <example>email@email.com.br</example>
+        </member>
+        <member name="P:AlunoAPI.Data.Dto.CreateAlunoDto.Password">
+            <sumary>
+            Password: must contain at least 6 characters; at least one capital letter, one special character, and one number.
+             </sumary>
+             <example>Senha123!</example>
+        </member>
+        <member name="T:AlunoAPI.Data.Dto.UpdateAlunoDto">
+            <sumary>
+            Used to update a students information.
+             </sumary>
+        </member>
+        <member name="P:AlunoAPI.Data.Dto.UpdateAlunoDto.NomeCompleto">
+            <sumary>
+            Name, middle name, and last name of the student.
+             </sumary>
+             <example>João Pereira da Silva</example>
+        </member>
+        <member name="P:AlunoAPI.Data.Dto.UpdateAlunoDto.NomeDeUsuario">
+            <sumary>
+            Username: name to be used in the system, must be all lowercase letters, numbers 
+            and special characters are not allowed.
+             </sumary>
+             <example>joaopereiradasilva</example>
+        </member>
+        <member name="P:AlunoAPI.Data.Dto.UpdateAlunoDto.Email">
+            <sumary>
+            Email: must follow the email format.
+             </sumary>
+             <example>email@email.com.br</example>
+        </member>
+        <member name="P:AlunoAPI.Data.Dto.UpdateAlunoDto.Password">
+            <sumary>
+            Password: must contain at least 6 characters; at least one capital letter, one special character, and one number.
+             </sumary>
+             <example>Senha123!</example>
         </member>
     </members>
 </doc>
