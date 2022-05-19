@@ -44,6 +44,8 @@ namespace AlunoAPI.Controllers
         ///
         /// </remarks>
         [ProducesResponseType(typeof(Aluno), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         [HttpPost]
         public IActionResult AdicionaAluno([FromBody] CreateAlunoDto dto)
         {
@@ -54,9 +56,8 @@ namespace AlunoAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.GetBaseException().Message);
+                return Problem(detail: ex.GetBaseException().Message);
             }
-
         }
 
 
@@ -69,12 +70,23 @@ namespace AlunoAPI.Controllers
         /// <response code="500">Server error.</response>
         /// <summary>Access all database information.</summary>
         [ProducesResponseType(typeof(Aluno), StatusCodes.Status200OK)]
-         [HttpGet]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+
+        [HttpGet]
         public IActionResult RecuperaTodosOsAlunos()
         {
-            List<ReadAlunoDto> readDto = _alunoService.RecuperaTodosOsALunos();
-            if (readDto.Count == 0) return NotFound();
-            return Ok(readDto);
+            try
+            {
+                List<ReadAlunoDto> readDto = _alunoService.RecuperaTodosOsALunos();
+                if (readDto.Count == 0) return NotFound();
+                return Ok(readDto);
+            }
+            catch(Exception ex)
+            {
+                return Problem(detail: ex.GetBaseException().Message);
+            }
+            
         }
 
 
@@ -89,12 +101,22 @@ namespace AlunoAPI.Controllers
         /// <summary>Using ID, access information from a specific student.</summary>
         /// <param name="id" example ="0"></param>
         [ProducesResponseType(typeof(Aluno), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+
         [HttpGet("{id}")]
         public IActionResult RecuperaAlunoPorId(int id)
         {
-            ReadAlunoDto readDto = _alunoService.RecuperaAlunoPorId(id);
-            if (readDto == null) return NotFound();
-            return Ok(readDto);
+            try
+            {
+                ReadAlunoDto readDto = _alunoService.RecuperaAlunoPorId(id);
+                if (readDto == null) return Problem(detail: "The required ID was not found in the database.", title:"Bad Request", statusCode: 404);
+                return Ok(readDto);
+            }
+            catch (Exception ex)
+            {
+                return Problem(detail: ex.GetBaseException().Message);
+            }
         }
 
 
@@ -122,12 +144,23 @@ namespace AlunoAPI.Controllers
         ///
         /// </remarks>
         [ProducesResponseType(typeof(Aluno), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+
         [HttpPut("{id}")]
         public IActionResult AtualizaAluno(int id, [FromBody] UpdateAlunoDto alunoDto)
         {
-            Aluno resultado = _alunoService.AtualizaAluno(id, alunoDto);
-            if (resultado == null) return NotFound();
-            return Ok(resultado);
+            try
+            {
+                Aluno resultado = _alunoService.AtualizaAluno(id, alunoDto);
+                if (resultado == null) return Problem(detail:"Invalid ID", title: "Bad Request", statusCode: 400);
+                return Ok(resultado);
+            }
+            catch(Exception ex)
+            {
+                return Problem(detail: ex.GetBaseException().Message);
+            }
         }
 
 
@@ -143,12 +176,22 @@ namespace AlunoAPI.Controllers
         /// <summary> Using ID, enables to delete a specific student.</summary>
         /// <param name="id" example ="0"></param>
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+
         [HttpDelete("{id}")]
         public IActionResult DeletaAluno(int id)
         {
-            Result resultado = _alunoService.DeletaAluno(id);
-            if (resultado == null) return NotFound();
-            return NoContent();
+            try
+            {
+                Result resultado = _alunoService.DeletaAluno(id);
+                if (resultado == null) return Problem(detail: "Invalid ID", title: "Bad Request", statusCode: 400);
+                return NoContent();
+            }
+            catch(Exception ex)
+            {
+                return Problem(detail: ex.GetBaseException().Message);
+            }
         }
     }
 }

@@ -23,6 +23,19 @@
             
              </remarks>
         </member>
+        <member name="M:AlunoAPI.Controllers.AlunoController.RecuperaTodosOsAlunos">
+            <response code="200">Data recovered Successfully.</response>
+            <response code="404">Empty database.</response>
+            <response code="500">Server error.</response>
+            <summary>Access all database information.</summary>
+        </member>
+        <member name="M:AlunoAPI.Controllers.AlunoController.RecuperaAlunoPorId(System.Int32)">
+            <response code="200">Data recovered Successfully.</response>
+            <response code="404">Invalid ID.</response>
+            <response code="500">Server error.</response>
+            <summary>Using ID, access information from a specific student.</summary>
+            <param name="id" example ="0"></param>
+        </member>
         <member name="M:AlunoAPI.Controllers.AlunoController.AtualizaAluno(System.Int32,AlunoAPI.Data.Dto.UpdateAlunoDto)">
              <response code="200">Information updated successfully.</response>
              <response code="400">This error occurs when the requesition fields are not filled within the required format.</response>
@@ -41,19 +54,6 @@
                  }
             
              </remarks>
-        </member>
-        <member name="M:AlunoAPI.Controllers.AlunoController.RecuperaTodosOsAlunos">
-            <response code="200">Data recovered Successfully.</response>
-            <response code="404">Empty database.</response>
-            <response code="500">Server error.</response>
-            <summary>Access all database information.</summary>
-        </member>
-        <member name="M:AlunoAPI.Controllers.AlunoController.RecuperaAlunoPorId(System.Int32)">
-            <response code="200">Data recovered Successfully.</response>
-            <response code="404">Invalid ID.</response>
-            <response code="500">Server error.</response>
-            <summary>Using ID, access information from a specific student.</summary>
-            <param name="id" example ="0"></param>
         </member>
         <member name="M:AlunoAPI.Controllers.AlunoController.DeletaAluno(System.Int32)">
             <response code="204">Student deleted successfully.</response>
@@ -123,6 +123,37 @@
              <example>email@email.com.br</example>
         </member>
         <member name="P:AlunoAPI.Data.Dto.UpdateAlunoDto.Password">
+            <sumary>
+            Password: must contain at least 6 characters; at least one capital letter, one special character, and one number.
+             </sumary>
+             <example>Senha123!</example>
+        </member>
+        <member name="P:AlunoAPI.Models.Aluno.Id">
+            <sumary>
+            Students Id: generated automatically.
+             </sumary>
+             <example>0</example>
+        </member>
+        <member name="P:AlunoAPI.Models.Aluno.NomeCompleto">
+            <sumary>
+            Name, middle name, and last name of the student.
+             </sumary>
+             <example>João Pereira da Silva</example>
+        </member>
+        <member name="P:AlunoAPI.Models.Aluno.NomeDeUsuario">
+            <sumary>
+            Username: name to be used in the system, must be all lowercase letters, numbers 
+            and special characters are not allowed.
+             </sumary>
+             <example>joaopereiradasilva</example>
+        </member>
+        <member name="P:AlunoAPI.Models.Aluno.Email">
+            <sumary>
+            Email: must follow the email format.
+             </sumary>
+             <example>email@email.com.br</example>
+        </member>
+        <member name="P:AlunoAPI.Models.Aluno.Password">
             <sumary>
             Password: must contain at least 6 characters; at least one capital letter, one special character, and one number.
              </sumary>
