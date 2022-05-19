@@ -68,7 +68,6 @@ namespace AlunoAPI.Controllers
         /// <response code="404">Empty database.</response>
         /// <response code="500">Server error.</response>
         /// <summary>Access all database information.</summary>
-
         [ProducesResponseType(typeof(Aluno), StatusCodes.Status200OK)]
          [HttpGet]
         public IActionResult RecuperaTodosOsAlunos()
@@ -89,7 +88,6 @@ namespace AlunoAPI.Controllers
         /// <response code="500">Server error.</response>
         /// <summary>Using ID, access information from a specific student.</summary>
         /// <param name="id" example ="0"></param>
-
         [ProducesResponseType(typeof(Aluno), StatusCodes.Status200OK)]
         [HttpGet("{id}")]
         public IActionResult RecuperaAlunoPorId(int id)
@@ -106,18 +104,30 @@ namespace AlunoAPI.Controllers
 
 
 
-        /// <response code="204">Information updated successfully.</response>
+        /// <response code="200">Information updated successfully.</response>
+        /// <response code="400">This error occurs when the requesition fields are not filled within the required format.</response>
         /// <response code="404">Invalid ID.</response>
         /// <response code="500">Server error.</response>
         /// <summary>Using ID, enables to update information from a specific student.</summary>
         /// <param name="id" example ="0"></param>
+        /// <remarks>
+        /// Requisition example:
+        ///
+        ///     {
+        ///        "nomeCompleto": "João da Silva",
+        ///        "nomeDeUsuario ": "newusername",
+        ///        "email": "email@email.com.br",
+        ///        "password":"Senha123!"
+        ///     }
+        ///
+        /// </remarks>
         [ProducesResponseType(typeof(Aluno), StatusCodes.Status204NoContent)]
         [HttpPut("{id}")]
         public IActionResult AtualizaAluno(int id, [FromBody] UpdateAlunoDto alunoDto)
         {
-            Result resultado = _alunoService.AtualizaAluno(id, alunoDto);
-            if (resultado.IsFailed) return NotFound();
-            return NoContent();
+            Aluno resultado = _alunoService.AtualizaAluno(id, alunoDto);
+            if (resultado == null) return NotFound();
+            return Ok(resultado);
         }
 
 
@@ -132,12 +142,12 @@ namespace AlunoAPI.Controllers
         /// <response code="500">Server error.</response>
         /// <summary> Using ID, enables to delete a specific student.</summary>
         /// <param name="id" example ="0"></param>
-        [ProducesResponseType(typeof(Aluno), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpDelete("{id}")]
         public IActionResult DeletaAluno(int id)
         {
             Result resultado = _alunoService.DeletaAluno(id);
-            if (resultado.IsFailed) return NotFound();
+            if (resultado == null) return NotFound();
             return NoContent();
         }
     }

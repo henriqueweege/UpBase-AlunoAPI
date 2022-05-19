@@ -51,16 +51,16 @@ namespace AlunoAPI.Services
             }
             return null;
         }
-        public Result AtualizaAluno(int id, UpdateAlunoDto alunoDto)
+        public Aluno AtualizaAluno(int id, UpdateAlunoDto alunoDto)
         {
             Aluno aluno = _context.Aluno.FirstOrDefault(aluno => aluno.Id == id);
             if(aluno == null)
             {
-                return Result.Fail("Aluno não encontrado");
+                return null;
             }
             _mapper.Map(alunoDto, aluno);
             _context.SaveChanges();
-            return Result.Ok();
+            return aluno;
         }
 
         public Result DeletaAluno(int id)

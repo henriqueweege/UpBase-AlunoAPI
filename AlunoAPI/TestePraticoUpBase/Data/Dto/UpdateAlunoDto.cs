@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace AlunoAPI.Data.Dto
-{    
-     ///<sumary>
-     ///Used to update a students information.
-     /// </sumary>
+{
+    ///<sumary>
+    ///Used to update a students information.
+    /// </sumary>
     public class UpdateAlunoDto
     {
         ///<sumary>
@@ -12,6 +12,7 @@ namespace AlunoAPI.Data.Dto
         /// </sumary>
         /// <example>João Pereira da Silva</example>
         [MaxLength(250)]
+        [Required]
         public string NomeCompleto { get; set; }
 
 
@@ -21,6 +22,7 @@ namespace AlunoAPI.Data.Dto
         /// </sumary>
         /// <example>joaopereiradasilva</example>
         [MaxLength(250)]
+        [Required]
         [RegularExpression(@"^(?=.*[a-z]).{2,}$")]
         public string NomeDeUsuario { get; set; }
 
@@ -31,6 +33,7 @@ namespace AlunoAPI.Data.Dto
         /// </sumary>
         /// <example>email@email.com.br</example>
         [MaxLength(250)]
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -40,6 +43,7 @@ namespace AlunoAPI.Data.Dto
         /// </sumary>
         /// <example>Senha123!</example>
         [MaxLength(250)]
+        [Required]
         [RegularExpression(@"^(?=.*[A-Z]+)(?=.*[\W]+)(?=.*\d+)(?=.*[\w]).{6,}$")]
         public string Password { get; set; }
 
