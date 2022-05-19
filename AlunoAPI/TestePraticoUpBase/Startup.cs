@@ -44,9 +44,10 @@ namespace TestePraticoUpBase
                     Version = "1.0.0",
                     Title = "Teste Prático UpBase - AlunoAPI",
                     Description = "API RESTful criada como requisito avaliativo da fase prática do processo " +
-                    "seletivo para vaga de estágio .NET na UpBase. Esta API conta com recursos CRUD, integração com " +
-                    "banco de dados MySQL, e recursos extra como senha criptografada e critérios que impedem o cadastro " +
-                    "de usuário com dados duplicados.",
+                    "seletivo para vaga de estágio .NET na UpBase. Esta API conta com funcionalidades CRUD, integração com " +
+                    "banco de dados MySQL, e os seguintes recursos: senha  salva com criptografia no banco de dados, " +
+                    "critérios que impedem o cadastro de usuário com dados duplicados, e critérios para criação de senha " +
+                    "segura (no mínimo: 6 caracteres; precisando contar pelo menos uma letra maiúscula, um caractere especial e um número).",
                     Contact = new OpenApiContact
                     {
                         Name = "Suporte",

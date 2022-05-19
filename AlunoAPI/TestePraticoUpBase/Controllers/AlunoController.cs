@@ -49,7 +49,7 @@ namespace AlunoAPI.Controllers
 
 
         /// <response code="200">Alunos recuperados com sucesso.</response>
-        /// <response code="404">ID inválido.</response>
+        /// <response code="404">Banco de dados vazio.</response>
         /// <summary>
         ///  Este método permite recuperar os dados de todos os alunos.
         /// </summary>

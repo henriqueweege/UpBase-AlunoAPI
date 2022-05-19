@@ -22,9 +22,10 @@ namespace AlunoAPI.Data.Dto
         [EmailAddress]
         public string Email { get; set; }
 
-        //[DataType(DataType.Password)]
+        
         [Required]
         [MaxLength(250)]
+        [RegularExpression(@"^(?=.*[A-Z]+)(?=.*[\W]+)(?=.*\d+)(?=.*[\w]).{6,}$")]
         public string Password { get; set; }
 
     }
