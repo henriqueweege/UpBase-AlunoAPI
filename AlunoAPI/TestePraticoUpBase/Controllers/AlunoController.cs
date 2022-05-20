@@ -27,8 +27,7 @@ namespace AlunoAPI.Controllers
 
 
         /// <response code="201">Student created with success.</response>
-        /// <response code="400">This error occurs when the requesition fields are not filled within the required format, 
-        /// or the student email/username already exists in the database.</response>
+        /// <response code="400">This error occurs when the requesition fields are not filled within the required format.</response>
         /// <response code="500">Server error.</response>
         /// <summary>Insert a student into the database.</summary>
         /// <remarks>
@@ -79,7 +78,7 @@ namespace AlunoAPI.Controllers
             try
             {
                 List<ReadAlunoDto> readDto = _alunoService.RecuperaTodosOsALunos();
-                if (readDto.Count == 0) return NotFound();
+                if (readDto.Count == 0) return Problem(detail: "Empty database.", title: "Not Found", statusCode: 404);
                 return Ok(readDto);
             }
             catch(Exception ex)
@@ -110,7 +109,7 @@ namespace AlunoAPI.Controllers
             try
             {
                 ReadAlunoDto readDto = _alunoService.RecuperaAlunoPorId(id);
-                if (readDto == null) return Problem(detail: "The required ID was not found in the database.", title:"Bad Request", statusCode: 404);
+                if (readDto == null) return Problem(detail: "The required ID was not found in the database.", title:"Not Found", statusCode: 404);
                 return Ok(readDto);
             }
             catch (Exception ex)
@@ -143,7 +142,7 @@ namespace AlunoAPI.Controllers
         ///     }
         ///
         /// </remarks>
-        [ProducesResponseType(typeof(Aluno), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(Aluno), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]

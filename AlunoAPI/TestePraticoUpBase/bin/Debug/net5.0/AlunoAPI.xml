@@ -6,8 +6,7 @@
     <members>
         <member name="M:AlunoAPI.Controllers.AlunoController.AdicionaAluno(AlunoAPI.Data.Dto.CreateAlunoDto)">
              <response code="201">Student created with success.</response>
-             <response code="400">This error occurs when the requesition fields are not filled within the required format, 
-             or the student email/username already exists in the database.</response>
+             <response code="400">This error occurs when the requesition fields are not filled within the required format.</response>
              <response code="500">Server error.</response>
              <summary>Insert a student into the database.</summary>
              <remarks>
