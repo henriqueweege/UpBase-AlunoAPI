@@ -185,7 +185,7 @@ namespace AlunoAPI.Controllers
             try
             {
                 Result resultado = _alunoService.DeletaAluno(id);
-                if (resultado == null) return Problem(detail: "Invalid ID", title: "Bad Request", statusCode: 400);
+                if (resultado.IsFailed) return Problem(detail: "Invalid ID", title: "Bad Request", statusCode: 404);
                 return NoContent();
             }
             catch(Exception ex)
